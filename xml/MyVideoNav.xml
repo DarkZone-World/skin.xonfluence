@@ -2,7 +2,7 @@
 <window>
     <defaultcontrol always="true">50</defaultcontrol>
     <menucontrol>9000</menucontrol>
-    <views>50,51,500,732,724,550,551,560,501,508,504,503,515,505,511</views>
+    <views>504,50,51,500,732,724,550,551,560,501,508,503,515,505,511</views>
     <include condition="!Skin.HasSetting(DisableTVTunes)">LoadTvTunes</include>
     <onload condition="!Skin.HasSetting(DisableTVNextAired)">RunScript(script.tv.show.next.aired,backend=True,silent=True)</onload>
     <onunload>ClearProperty(SideBladeOpen)</onunload>
@@ -226,7 +226,9 @@
                     <label>$LOCALIZE[32014]</label>
                     <onclick>Skin.ToggleSetting(HideRatingsViews)</onclick>
                     <selected>Skin.HasSetting(HideRatingsViews)</selected>
-                    <visible>[Control.IsVisible(504) | Control.IsVisible(503) | Control.IsVisible(50) | Control.IsVisible(51)] + Container.Content(episodes)</visible>
+                    <!-- diable rating in all views, not just episodes  by:Rafi  -->
+                    <!-- <visible>[Control.IsVisible(504) | Control.IsVisible(503) | Control.IsVisible(50) | Control.IsVisible(51)] + Container.Content(episodes)</visible> -->
+					<visible>[Control.IsVisible(504) | Control.IsVisible(503) | Control.IsVisible(50) | Control.IsVisible(51)]</visible>
                 </control>
                 <control type="label" id="201">
                     <width>375</width>

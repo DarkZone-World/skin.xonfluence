@@ -47,7 +47,7 @@
                     <textcolor>white</textcolor>
                     <focusedcolor>white</focusedcolor>
                     <align>center</align>
-                    <onclick>Skin.SetString(SkinFanart.Name,Skin Backgrounds - Xonfluence)</onclick>
+                    <onclick>Skin.SetString(SkinFanart.Name,Skin Backgrounds - xonfluence)</onclick>
                     <onclick>Skin.SetString(SkinFanart.Path,resource://resource.images.skinbackgrounds.xonfluence/)</onclick>
                     <onclick>Skin.SetString(SkinFanart.Ext,.jpg)</onclick>
                     <onclick condition="!System.HasAddon(resource.images.skinbackgrounds.xonfluence)">InstallAddon(resource.images.skinbackgrounds.xonfluence)</onclick>

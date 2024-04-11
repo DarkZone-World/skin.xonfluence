@@ -4875,6 +4875,7 @@
         <include condition="Skin.HasSetting(UPnP_Mode) + Skin.String(UPnPServer,Kodi) + Skin.String(CustomWidgets,50)">UPnP_RecentMovies50</include>
         <include condition="Skin.HasSetting(UPnP_Mode) + Skin.String(UPnPServer,Kodi) + Skin.String(CustomWidgets,75)">UPnP_RecentMovies75</include>
         <include condition="Skin.HasSetting(UPnP_Mode) + Skin.String(UPnPServer,Kodi) + Skin.String(CustomWidgets,100)">UPnP_RecentMovies100</include>
+    <include condition="Skin.HasSetting(UPnP_Mode) + Skin.String(UPnPServer,Kodi) + Skin.String(CustomWidgets,500)">UPnP_RecentMovies500</include>		
     </include>
     <include name="UPnP_RecentMovies10">
         <content target="video" limit="10">$INFO[Skin.String(UPnP_Path)]library%3a%2f%2fvideo%2frecentlyaddedmovies.xml%2f/</content>
@@ -4905,6 +4906,7 @@
         <include condition="Skin.String(CustomWidgets,50)">VideoNodeContent50</include>
         <include condition="Skin.String(CustomWidgets,75)">VideoNodeContent75</include>
         <include condition="Skin.String(CustomWidgets,100)">VideoNodeContent100</include>
+    <include condition="Skin.String(CustomWidgets,500)">VideoNodeContent500</include>		
     </include>
     <include name="VideoNodeContent10">
         <content target="video" limit="10">$VAR[VideoNodeContent]</content>
@@ -4927,6 +4929,9 @@
     <include name="VideoNodeContent100">
         <content target="video" limit="100">$VAR[VideoNodeContent]</content>
     </include>
+    <include name="VideoNodeContent500">
+        <content target="video" limit="500">$VAR[VideoNodeContent]</content>
+    </include>	
     <include name="CustomWidgetContent">
         <include condition="String.IsEmpty(Skin.String(CustomWidgets))">CustomWidgetContent10</include>
         <include condition="Skin.String(CustomWidgets,20)">CustomWidgetContent20</include>
@@ -4935,6 +4940,7 @@
         <include condition="Skin.String(CustomWidgets,50)">CustomWidgetContent50</include>
         <include condition="Skin.String(CustomWidgets,75)">CustomWidgetContent75</include>
         <include condition="Skin.String(CustomWidgets,100)">CustomWidgetContent100</include>
+    <include condition="Skin.String(CustomWidgets,500)">CustomWidgetContent500</include>		
     </include>
     <include name="CustomWidgetContent10">
         <content target="videos" limit="10">$INFO[Container(9000).ListItem.Property(WidgetSet)]</content>
@@ -4957,4 +4963,7 @@
     <include name="CustomWidgetContent100">
         <content target="videos" limit="100">$INFO[Container(9000).ListItem.Property(WidgetSet)]</content>
     </include>
+    <include name="CustomWidgetContent500">
+        <content target="videos" limit="500">$INFO[Container(9000).ListItem.Property(WidgetSet)]</content>
+    </include>	
 </includes>

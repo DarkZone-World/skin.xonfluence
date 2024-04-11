@@ -46,9 +46,8 @@
             <top></top>
             <bottom>0</bottom>
             <width>1980</width>
-            <height>135</height>
+            <height>375</height>
             <texture>floor.png</texture>
-            <animation effect="rotatex" end="45" time="0" center="930,0" condition="true">Conditional</animation>
             <animation effect="slide" time="200" condition="Window.Previous(Home)">WindowOpen</animation>
             <animation effect="slide" time="200" condition="Window.Next(Home)">WindowClose</animation>
             <include condition="!String.IsEmpty(Skin.String(HomeTrans))">HomeTransparentEffect</include>

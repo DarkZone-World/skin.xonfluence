@@ -520,12 +520,12 @@
     </variable>
     <variable name="SeekLabel">
         <value condition="Player.IsTempo">$LOCALIZE[31047] [COLOR=grey] $INFO[Player.PlaySpeed][/COLOR]</value>
-        <value condition="Player.Playing + !Player.Seeking + !Player.DisplayAfterSeek">$LOCALIZE[31042]</value>
+        <value condition="Player.Playing + !Player.Seeking + !Player.HasPerformedSeek(3)">$LOCALIZE[31042]</value>
         <value condition="[Player.Paused + !Player.Caching] + !Player.Seeking">$LOCALIZE[31043]</value>
         <value condition="[Player.Paused + Player.Caching] + !Player.Seeking">$LOCALIZE[15107] $INFO[Player.CacheLevel]%</value>
         <value condition="!String.IsEmpty(Player.SeekStepSize) + ![player.forwarding | player.rewinding]">$LOCALIZE[31046][COLOR=grey] $INFO[Player.SeekStepSize][/COLOR]</value>
-        <value condition="Player.DisplayAfterSeek + ![player.forwarding | player.rewinding | Player.Paused]">$LOCALIZE[31042][COLOR=grey] $INFO[Player.SeekOffset][/COLOR]</value>
-        <value condition="!Player.DisplayAfterSeek + Player.Seeking">$LOCALIZE[31046]</value>
+        <value condition="Player.HasPerformedSeek(3) + ![player.forwarding | player.rewinding | Player.Paused]">$LOCALIZE[31042][COLOR=grey] $INFO[Player.SeekOffset][/COLOR]</value>
+        <value condition="!Player.HasPerformedSeek(3) + Player.Seeking">$LOCALIZE[31046]</value>
         <value condition="Player.Forwarding">$LOCALIZE[31044]</value>
         <value condition="Player.Rewinding">$LOCALIZE[31045]</value>
         <value condition="Player.Paused">$LOCALIZE[31043]</value>
@@ -648,6 +648,16 @@
             </focusedlayout>
         </control>
     </include>
+    <include name="BehindDialogDarkBackgroundDarker">
+		<control type="image">
+			<left>0</left>
+			<top>0</top>
+			<width>1920</width>
+			<height>1080</height>
+			<texture>_added_img/100x100_black.png</texture>
+			<animation effect="fade" end="96" time="0" condition="true">Conditional</animation>
+		</control>
+	</include>	
     <include name="DialogBackgroundCommons">
         <control type="image">
             <description>background image</description>
@@ -1714,6 +1724,27 @@
 		    <control type="label" id="1">
                 <description>Date label</description>
                 <right>30</right>
+                <top>980</top>
+                <width>650</width>
+                <height>120</height>
+                <align>right</align>
+                <aligny>center</aligny>
+                <font>font11</font>
+                <textcolor>blue</textcolor>
+                <shadowcolor>black</shadowcolor>
+                <label></label>
+                <include>Window_OpenClose_Animation</include>
+                <animation effect="slide" start="0,0" end="-60,0" time="75" condition="Player.Muted">conditional</animation>
+                <animation effect="slide" start="0,0" end="-120,0" time="0" condition="![Window.IsVisible(AddonSettings) | Window.IsVisible(SelectDialog) | Window.IsVisible(VisualisationPresetList) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(PVROSDGuide) | Window.IsVisible(1105)]+system.getbool(input.enablemouse)+Window.IsVisible(MusicOSD)">conditional</animation>
+                <animation effect="slide" start="0,0" end="-120,0" time="0" condition="![Window.IsVisible(PVROSDGuide) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(SliderDialog) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(VideoBookmarks)]+system.getbool(input.enablemouse)+Window.IsVisible(VideoOSD)">conditional</animation>
+                <animation effect="slide" start="0,0" end="-120,0" time="0" condition="system.getbool(input.enablemouse) + Window.IsVisible(1198)">conditional</animation>
+                <animation effect="slide" start="0,0" end="0,-82" time="150" condition="Window.IsVisible(busydialog)">conditional</animation>
+                <include condition="!String.IsEmpty(Skin.String(HomeTrans))">HomeTransparentEffect</include>
+                <visible>!Skin.HasSetting(HideSystemTime) + Skin.HasSetting(HideCPUTemp)</visible>
+            </control>			
+		    <control type="label" id="1">
+                <description>Date label</description>
+                <right>30</right>
                 <top>52</top>
                 <width>450</width>
                 <height>22</height>
@@ -2469,7 +2500,7 @@
             <control type="group" id="1">
                 <left>30</left>
                 <top>0</top>
-                <visible>!String.IsEmpty(Weather.Plugin) + String.IsEqual(Skin.String(TopLeftHomeInfo),Weather)</visible>
+                <visible>!String.IsEmpty(Weather.Plugin)</visible>
                 <include>Window_OpenClose_Animation</include>
      		    <control type="multiimage" id="1">
                     <description>Weather image</description>
